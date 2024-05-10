@@ -22,7 +22,10 @@ body {
     font-size:12px;
 }
 
-#start {background:url(../../images/home/page-bg.jpg) no-repeat scroll 50% 32px;}
+#start {
+    background: url(../../images/home/page-bg.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
 #start.partner-rtl2 {background:url(../../images/home/page-bg_rtl2.jpg) no-repeat scroll 50% 32px;}
 #start.partner-komputerswiat {background:url(../../images/home/page-bg_komputerswiat.jpg) no-repeat scroll 50% 32px;}
 #start.partner-juegosweb {background:url(../../images/home/page-bg_juegosweb.jpg) no-repeat scroll 50% 32px;}
