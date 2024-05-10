@@ -67,6 +67,13 @@ XGP uses MailHog and PHPMailer as tools for better mailing support. MailHog allo
 
 Read our <a href="https://github.com/XGProyect/XG-Proyect-v3.x.x/wiki/MailHog-usage-and-setup" target="_blank">MailHog guide</a> to get started.
 
+## How to access
+Please include in your hosts file the following
+```
+127.0.0.1 galaxy-warlords.com
+```
+Once you have the docker up and running just access http://galaxy-warlords.com and there you have it.
+
 ## Who is using XG Proyect?
 We are happy to deliver this software giving others the possibility to have a good OGame Clon.  
 On the other hand, it's a pleasure to see people using XG Proyect.  
