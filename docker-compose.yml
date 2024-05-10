@@ -31,6 +31,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       PMA_HOST: db
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
   mailhog:
     image: mailhog/mailhog
     container_name: mailhog
