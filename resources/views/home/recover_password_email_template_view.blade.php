@@ -1,6 +1,6 @@
 <table>
     <tr>
-        <td><img src="https://xgproyect.org/wp-content/uploads/2019/10/xgp-new-logo-black.png" alt="XG Proyect Logo" width="250px"/></td>
+        <td><img src="http://galaxy-warlords.com/public/images/home/wideLogo.png" alt="Galaxy Warlords" width="250px"/></td>
     </tr>
     <tr>
         <td>&nbsp;</td>

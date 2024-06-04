@@ -7,8 +7,8 @@
                     <!-- Nested Row within Card Body -->
                     <div class="row" style="background-color: rgba(0,0,0,0.2);">
                         <div class="col-lg-6 d-none d-lg-block my-auto text-center">
-                            <img src="https://xgproyect.org/wp-content/uploads/2019/10/xgp-new-logo-white.png"
-                                alt="XG Proyect Logo" title="XG Proyect" width="250px">
+                            <img src="/public/images/home/wideLogo.png"
+                                alt="Galaxy Warlords" title="Galaxy Warlords" width="250px">
                         </div>
                         <div class="col-lg-6">
                             <div class="p-5">

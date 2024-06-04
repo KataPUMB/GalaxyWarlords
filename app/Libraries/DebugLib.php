@@ -150,7 +150,7 @@ class DebugLib
                     {body{background:none;margin-top:0;max-width:none;padding-right:0}}
                     </style>
                     <a href=//www.xgproyect.org/>
-                    <img src="https://xgproyect.org/wp-content/uploads/2019/10/xgp-new-logo-black.png" alt="XG Proyect Logo" width="250px">
+                    <img src="/public/images/home/wideLogo.png" alt="Galaxy Warlords" width="250px">
                     </a>
                     <p><b>500.</b> <ins>That’s an error.</ins>
                     <p>The requested URL throw an error. Contact the game Administrator.

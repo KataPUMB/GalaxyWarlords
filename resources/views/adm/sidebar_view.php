@@ -3,8 +3,8 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php?page=home">
         <div class="sidebar-brand-icon">
-            <img src="https://xgproyect.org/wp-content/uploads/2019/10/xgp-new-logo-white.png" alt="XG Proyect Logo"
-                title="XG Proyect" width="150px">
+            <img src="/public/images/home/wideLogo.png" alt="Galaxy Warlords"
+                title="Galaxy Warlords" width="150px">
         </div>
     </a>
 

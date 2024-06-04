@@ -1,8 +1,8 @@
 
 
 <p align="center"
-    <a href="https://www.xgproyect.org/" target="_blank">
-        <img align="center" img src="https://xgproyect.org/wp-content/uploads/2019/10/xgp-new-logo-black.png" width="250px" title="XG Proyect" alt="xgp-logo">
+    <a href="http://galaxy-warlords.com/" target="_blank">
+        <img align="center" img src="/public/images/home/wideLogo.png" width="250px" title="Galaxy Warlords" alt="xgp-logo">
     </a>
     <br>
     <strong>X</strong>treme <strong>G</strong>amez <strong>Proyect</strong>o
@@ -15,7 +15,7 @@ About
 
 XG Proyect (XGP) is a web browser game based on the famous OGame. Our goal is to offer a package that is as similar as possible to the original, but keeping their original design.
 
-Official Website: https://www.xgproyect.org/  
+Official Website: http://galaxy-warlords.com/  
 Live Server: https://www.xgproyect.net/  
 
 ## Requirements
@@ -79,7 +79,7 @@ We are happy to deliver this software giving others the possibility to have a go
 On the other hand, it's a pleasure to see people using XG Proyect.  
 <a href="https://github.com/XGProyect/XG-Proyect-v3.x.x/issues" target="_blank">Create a ticket</a> on GitHub so I can put your game logo here!  
 
-<img align="center" img src="https://xgproyect.org/wp-content/uploads/2019/10/xgp-new-logo-black.png" width="150px" title="XG Proyect" alt="xgp-logo">
+<img align="center" img src="/public/images/home/wideLogo.png" width="150px" title="Galaxy Warlords" alt="xgp-logo">
 
 ## We support
 The following are tools or frameworks that we use to do our coding experience better!

@@ -223,7 +223,7 @@ UNIQUE KEY `option_name` (`option_name`)
 
 $tables['options_insert'] = "INSERT INTO `" . OPTIONS . "` (`option_name`, `option_value`) VALUES
 ('game_name', 'Galaxy Warlods'),
-('game_logo', '/public/images/home/FullWidthLogo.png'),
+('game_logo', '/public/images/home/wideLogo.png'),
 ('lang', 'spanish'),
 ('game_speed', '2500'),
 ('fleet_speed', '2500'),
