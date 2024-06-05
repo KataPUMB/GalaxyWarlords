@@ -1,6 +1,7 @@
 <?php
 
 $lang = [
+    'lang'  => 'en_US',
     'hm_keywords' => 'Game, Browser, Online, Free, Legendary, MMOG, Science fiction, Space, Spaceship',
     'hm_description' => 'Galaxy Warlords: Conquer the cosmos with thousands. Explore, build, and battle for supremacy in this legendary space strategy game.',
     'hm_title' => '%s',
@@ -23,6 +24,7 @@ $lang = [
     'hm_only_characters' => 'Please use characters only.',
     'hm_hidden_title' => 'Galaxy Warlords: Conquer the cosmos',
     'hm_login_button' => 'Login',
+    'hm_reister_button' => 'Register',
     'hm_close_button' => 'Close',
     'hm_universe' => 'Universe:',
     'hm_universe_name' => 'Elysium',
@@ -30,7 +32,6 @@ $lang = [
     'hm_username_mail' => 'Email Address:',
     'hm_password' => 'Password:',
     'hm_password_forgot' => 'Forgot your password?',
-    'hm_play_for_free' => 'PLAY FOR FREE!',
     'hm_terms_accept' => 'By logging in, I accept the',
     'hm_terms' => 'Terms and Conditions',
     'hm_mail_address' => 'Email Address:',
@@ -43,5 +44,6 @@ $lang = [
     'hm_about' => 'About GalaxyWarlords',
     'hm_media' => 'Media',
     'hm_forum' => 'Forum',
+    'hm_game_desc' => 'Dive into Galaxy Warlords, the classic space strategy game, and fight for sovereignty in the universe: build your fleet, recruit commanders, conquer planets, research new technologies, forge alliances, and wage epic battles across the galaxy against your foes.',
 ];
 

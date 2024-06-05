@@ -57,6 +57,30 @@ body {
 /*###########################
 ###		 STUFF
 ###########################*/
+.logoContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.logoContainer img{
+    max-width: 600px;
+}
+.contentTextContainer{
+    color:white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    background-color: #0000002d;
+    padding:8px;
+    border-radius: 12px;
+    font-size: 16px;
+    text-align: center;
+    width: auto;
+    height: auto;
+    max-width: 900px;
+}
 a:link {color:#4579a4; font-weight:bold; outline:none; text-decoration:none;}
 a:visited {color:#619fc8; font-weight:bold; text-decoration:none;}
 a:hover, a:active {color:#619fc8; outline:none;}
@@ -149,6 +173,7 @@ a#loginBtn {
     background:url(../../images/home/sprite.png) no-repeat scroll 0 0;
     color:#FFF;
     display:block;
+    position: sticky;
     float:right;
     font-size:16px;
     height:30px;
@@ -157,9 +182,26 @@ a#loginBtn {
     width:102px;
     text-align:center;
     text-shadow:-1px -1px 0 #501313;
+    z-index: 1;
 }
 
-a#loginBtnEvent {
+a#registerBtn {
+    background:url(../../images/home/sprite.png) no-repeat scroll 0 0;
+    color:#FFF;
+    display:block;
+    position: sticky;
+    float:left;
+    font-size:16px;
+    height:30px;
+    line-height:30px;
+    margin: 32px 0px 0 32px;
+    width:102px;
+    text-align:center;
+    text-shadow:-1px -1px 0 #501313;
+    z-index: 1;
+}
+
+a#loginBtnEvent, a#registerBtnEvent {
     background:url(../../images/home/xmas_event.png) no-repeat scroll 0 0;
     color:#FFF;
     display:block;
@@ -181,19 +223,19 @@ span#eventText {
     width: 240px;
 }
 
-a#loginBtnEvent:hover {background-position: 0px -60px;}
+a#loginBtnEvent:hover, a#registerBtnEvent:hover {background-position: 0px -60px;}
 /*IE6 double margin*/
-*html a#loginBtn {display:inline;}
+*html a#loginBtn, *html a#registerBtn {display:inline;}
 
-a#loginBtn:hover {background-position: -102px 0;}
+a#loginBtn:hover, a#registerBtn:hover {background-position: -102px 0;}
 
 #login {
-    background:url(../../images/home/login-mask.gif) no-repeat;
+    background:url(../../images/home/login-mask.png) no-repeat;
     height:267px;
     display:none;
     position:absolute;
-    right:20px;
-    top:97px;
+    right:30px;
+    top:70px;
     width:223px;
     z-index: 20;
 }
@@ -311,54 +353,54 @@ a#loginBtn:hover {background-position: -102px 0;}
 #### 	SUBSCRIBE
 ############################
 */
-#subscribe {
-    -moz-border-radius:2px;
-    -webkit-border-radius:2px;
-    display:inline;
-    float:left;
-    margin: 48px 1px 8px 8px;
-    width:220px;
-    position: relative;
+#subscribe {    
+    background:url(../../images/home/register-mask.png) no-repeat;
+    height:417px;
+    display:none;
+    position:absolute;
+    left:30px;
+    top:70px;
+    width:242px;
+    z-index: 20;
 }
 #subscribeForm {
     -moz-border-radius:2px;
     -webkit-border-radius:2px;
-    background:none repeat scroll 0 0 #22303F;
-    border:1px solid #2D343C;
-    width:220px;
+    width:242px;
 }
 #subscribeForm h2 {
     font-size:14px;
     padding:0 0 0 10px;
     text-transform:uppercase;
-    text-shadow:1px 2px #000000;
-    border-bottom:1px dotted #000;
 }
 
 #subscribeForm .input-wrap {
-    background:#22303f url(../../images/home/subscribe-form-bg.png) repeat-x 0 bottom;
     height:50px;
+    max-width: 220px;
+    margin: auto;
 }
 #subscribeForm .first {
     height: 53px;
+    margin-top: 22px;
 }
 
-#subscribeForm .first label a {font-size:11px;}
+#subscribeForm .first label a {font-size:12px;}
 #subscribeForm label {
     margin:2px auto;
     width:188px;
 }
 #subscribeForm label span {
-    font-size:11px;
+    font-size:12px;
 }
 #subscribeForm #submitWrap {
-    background:url(../../images/home/subscribe-bg.jpg) repeat-x;
     position: relative;
+    max-width: 220px;
+    margin: auto;
 }
 #subscribeForm #submitWrap label {
     background:none;
-    color:#848484;
-    font-size:11px;
+    color:#b3b3b3;
+    font-size:12px;
     height:40px;
     padding:0;
     margin:0 auto;

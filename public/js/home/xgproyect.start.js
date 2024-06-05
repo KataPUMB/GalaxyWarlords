@@ -38,23 +38,32 @@ $(document).ready(function(){
 			break;
 		}
 	}
-    function loginFadeIn() {
-        $("#loginBtn").addClass('open').text(JSLoca[1]);
-        $('#login').fadeIn('fast', function(){$("#usernameLogin").focus();});
+    function fadeIn(buttonSelector, fadedSelector, addedClass, callback) {
+        $(buttonSelector).addClass(addedClass).text(JSLoca[1]);
+        $(fadedSelector).fadeIn('fast', callback());
     }
 
-    function loginfadeOut() {
-        $("#loginBtn").removeClass('open').text(JSLoca[0]);
-		$('#login').fadeOut();
+    function fadeOut(buttonSelector, fadedSelector, removedClass) {
+        $(buttonSelector).removeClass(removedClass).text(JSLoca[0]);
+		$(fadedSelector).fadeOut();
     }
 
 	//LOGIN BUTTON MASK-SLIDER
 	$("#loginBtn").click(function () {
 		$.validationEngine.closePrompt('.formError',true);
 		if ($(this).hasClass('open')) {
-			loginfadeOut();
+			fadeOut("#loginBtn", "#login", "open");
 		} else {
-			loginFadeIn();
+			fadeIn("#loginBtn", "#login", "open", function(){$("#usernameLogin").focus();});
+		}
+    });
+
+	$("#registerBtn").click(function () {
+		$.validationEngine.closePrompt('.formError',true);
+		if ($(this).hasClass('open')) {
+			fadeOut("#registerBtn", "#subscribe", "open");
+		} else {
+			fadeIn("#registerBtn", "#subscribe", "open", function(){$("#username").focus();});
 		}
     });
 

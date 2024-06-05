@@ -1,6 +1,7 @@
 <?php
 
 $lang = [
+    'lang' => 'es_ES',
     'hm_keywords' => 'Juego, navegador, online, gratis, legendario, MMOG, ciencia ficción, espacio, nave',
     'hm_description' => 'XG Proyect - ¡El juego legendario en el espacio! Descubre un universo junto con miles de jugadores.',
     'hm_title' => 'Página inicial de %s',
@@ -23,6 +24,7 @@ $lang = [
     'hm_only_characters' => 'Utilizar s\u00f3lo caracteres.',
     'hm_hidden_title' => 'XGProyect - Conquista el universo',
     'hm_login_button' => 'Entrar',
+    'hm_reister_button' => 'Registrarse',
     'hm_close_button' => 'Cerrar',
     'hm_universe' => 'Universo:',
     'hm_universe_name' => 'Universo 1',
@@ -30,7 +32,6 @@ $lang = [
     'hm_username_mail' => 'Dirección de E-Mail:',
     'hm_password' => 'Contraseña:',
     'hm_password_forgot' => '¿Contraseña olvidada?',
-    'hm_play_for_free' => '¡JUEGA GRATUITAMENTE!',
     'hm_terms_accept' => 'Con el login acepto los',
     'hm_terms' => 'T&Cs',
     'hm_mail_address' => 'Dirección de E-Mail:',
@@ -43,4 +44,5 @@ $lang = [
     'hm_about' => 'Sobre XGP',
     'hm_media' => 'Media',
     'hm_forum' => 'Foro',
+    'hm_game_desc' => 'Sumérgete en Galaxy Warlords, el clásico juego de estrategia espacial, y lucha por la soberanía en el universo: construye tu flota, recluta comandantes, conquista planetas, investiga nuevas tecnologías, forja alianzas y libra batallas épicas a través de la galaxia contra tus enemigos.',
 ];
