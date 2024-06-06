@@ -48,12 +48,19 @@ class PhalanxController extends BaseController
         $radar_limit_sup = min($radar_limit_sup, MAX_SYSTEM_IN_GALAXY);
 
         /* input validation */
-        $Galaxy = (int) $_GET['galaxy'];
-        $System = (int) $_GET['system'];
-        $Planet = (int) $_GET['planet'];
-        $PlType = (int) $_GET['planettype'];
+        $galaxy = (int) $_GET['galaxy'];
+        $system = (int) $_GET['system'];
+        $planet = (int) $_GET['planet'];
+        $plType = (int) $_GET['planettype'];
+
         /* cheater detection */
-        if ($System < $radar_limit_inf or $System > $radar_limit_sup or $Galaxy != $this->planet['planet_galaxy'] or $PlType != PlanetTypesEnumerator::PLANET or $this->planet['planet_type'] != PlanetTypesEnumerator::MOON) {
+        if (
+            $system < $radar_limit_inf ||
+            $system > $radar_limit_sup ||
+            $galaxy != $this->planet['planet_galaxy'] ||
+            $plType != PlanetTypesEnumerator::PLANET ||
+            $this->planet['planet_type'] != PlanetTypesEnumerator::MOON
+        ) {
             Functions::redirect('game.php?page=galaxy');
         }
 
@@ -63,12 +70,12 @@ class PhalanxController extends BaseController
         if ($this->planet['planet_deuterium'] >= 10000) {
             $this->phalanxModel->reduceDeuterium($this->user['user_current_planet']);
 
-            $target_planet_info = $this->phalanxModel->getTargetPlanetIdAndName($Galaxy, $System, $Planet);
+            $target_planet_info = $this->phalanxModel->getTargetPlanetIdAndName($galaxy, $system, $planet);
 
             $TargetID = $target_planet_info['planet_user_id'];
             $TargetName = $target_planet_info['planet_name'];
 
-            $target_moon = $this->phalanxModel->getTargetMoonStatus($Galaxy, $System, $Planet);
+            $target_moon = $this->phalanxModel->getTargetMoonStatus($galaxy, $system, $planet);
 
             //if there isn't a moon,
             if ($target_moon === false) {
@@ -77,7 +84,7 @@ class PhalanxController extends BaseController
                 $TargetMoonIsDestroyed = (isset($target_moon['planet_destroyed']) && $target_moon['planet_destroyed'] !== 0);
             }
 
-            $FleetToTarget = $this->phalanxModel->getFleetsToTarget($Galaxy, $System, $Planet);
+            $FleetToTarget = $this->phalanxModel->getFleetsToTarget($galaxy, $system, $planet);
 
             $Record = 0;
             $fpage = [];
@@ -92,8 +99,8 @@ class PhalanxController extends BaseController
                 $FleetRow['fleet_resource_metal'] = 0;
                 $FleetRow['fleet_resource_crystal'] = 0;
                 $FleetRow['fleet_resource_deuterium'] = 0;
-                $isStartedfromThis = $FleetRow['fleet_start_galaxy'] == $Galaxy && $FleetRow['fleet_start_system'] == $System && $FleetRow['fleet_start_planet'] == $Planet;
-                $isTheTarget = $FleetRow['fleet_end_galaxy'] == $Galaxy && $FleetRow['fleet_end_system'] == $System && $FleetRow['fleet_end_planet'] == $Planet;
+                $isStartedfromThis = $FleetRow['fleet_start_galaxy'] == $galaxy && $FleetRow['fleet_start_system'] == $system && $FleetRow['fleet_start_planet'] == $planet;
+                $isTheTarget = $FleetRow['fleet_end_galaxy'] == $galaxy && $FleetRow['fleet_end_system'] == $system && $FleetRow['fleet_end_planet'] == $planet;
 
                 $fpage[$ArrivetoTargetTime] = '';
                 $fpage[$EndStayTime] = '';
@@ -147,9 +154,9 @@ class PhalanxController extends BaseController
             $parse['phl_er_deuter'] = $this->langs->line('px_no_deuterium');
         }
 
-        $parse['phl_pl_galaxy'] = $Galaxy;
-        $parse['phl_pl_system'] = $System;
-        $parse['phl_pl_place'] = $Planet;
+        $parse['phl_pl_galaxy'] = $galaxy;
+        $parse['phl_pl_system'] = $system;
+        $parse['phl_pl_place'] = $planet;
         $parse['phl_pl_name'] = $TargetName;
 
         $this->page->display(
