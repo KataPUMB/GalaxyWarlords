@@ -15,7 +15,7 @@
 define('SYSTEM_VERSION', '3.4.0');
 
 // DEBUG MODE
-define('DEBUG_MODE', false);
+define('DEBUG_MODE', true);
 
 // LOG DB AND PHP ERRORS
 define('LOG_ERRORS', true);

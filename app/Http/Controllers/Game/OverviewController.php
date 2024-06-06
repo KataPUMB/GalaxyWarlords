@@ -47,37 +47,44 @@ class OverviewController extends BaseController
 
     private function buildPage(): void
     {
+        $planet = $this->getPlanet();
+        
+        $template = $this->template->set(
+            'overview/overview_body',
+            $planet
+        );
+
+        $this->page->display($template);
+    }
+    
+    private function getPlanet(): array
+    {
         $moon = $this->getPlanetMoon();
 
-        $this->page->display(
-            $this->template->set(
-                'overview/overview_body',
-                array_merge(
-                    $this->langs->language,
-                    [
-                        'dpath' => DPATH,
-                        'planet_name' => $this->planet['planet_name'],
-                        'user_name' => $this->user['user_name'],
-                        'date_time' => Timing::formatExtendedDate(time()),
-                        'Have_new_message' => $this->getMessages(),
-                        'fleet_list' => $this->getFleetMovements(),
-                        'planet_image' => $this->planet['planet_image'],
-                        'building' => $this->getCurrentWork($this->planet),
-                        'moon_img' => $moon['moon_img'],
-                        'moon' => $moon['moon'],
-                        'anothers_planets' => $this->getPlanets(),
-                        'planet_diameter' => FormatLib::prettyNumber($this->planet['planet_diameter']),
-                        'planet_field_current' => $this->planet['planet_field_current'],
-                        'planet_field_max' => DevelopmentsLib::maxFields($this->planet),
-                        'planet_temp_min' => $this->planet['planet_temp_min'],
-                        'planet_temp_max' => $this->planet['planet_temp_max'],
-                        'galaxy_galaxy' => $this->planet['planet_galaxy'],
-                        'galaxy_system' => $this->planet['planet_system'],
-                        'galaxy_planet' => $this->planet['planet_planet'],
-                        'user_rank' => $this->getUserRank(),
-                    ]
-                )
-            )
+        return array_merge(
+            $this->langs->language,
+            [
+                'dpath' => DPATH,
+                'planet_name' => $this->planet['planet_name'],
+                'user_name' => $this->user['user_name'],
+                'date_time' => Timing::formatExtendedDate(time()),
+                'Have_new_message' => $this->getMessages(),
+                'fleet_list' => $this->getFleetMovements(),
+                'planet_image' => $this->planet['planet_image'],
+                'building' => $this->getCurrentWork($this->planet),
+                'moon_img' => $moon['moon_img'],
+                'moon' => $moon['moon'],
+                'anothers_planets' => $this->getPlanets(),
+                'planet_diameter' => FormatLib::prettyNumber($this->planet['planet_diameter']),
+                'planet_field_current' => $this->planet['planet_field_current'],
+                'planet_field_max' => DevelopmentsLib::maxFields($this->planet),
+                'planet_temp_min' => $this->planet['planet_temp_min'],
+                'planet_temp_max' => $this->planet['planet_temp_max'],
+                'galaxy_galaxy' => $this->planet['planet_galaxy'],
+                'galaxy_system' => $this->planet['planet_system'],
+                'galaxy_planet' => $this->planet['planet_planet'],
+                'user_rank' => $this->getUserRank(),
+            ]
         );
     }
 
@@ -87,7 +94,7 @@ class OverviewController extends BaseController
      * param $is_current_planet
      * return building in progress or free text
      */
-    private function getCurrentWork($user_planet, $is_current_planet = true)
+    private function getCurrentWork($user_planet, bool $is_current_planet = true): string
     {
         // THE PLANET IS "FREE" BY DEFAULT
         $building_block = $this->langs->line('ov_free');
@@ -97,34 +104,45 @@ class OverviewController extends BaseController
             UpdatesLibrary::updateBuildingsQueue($user_planet, $this->user);
         }
 
-        if ($user_planet['planet_b_building'] != 0) {
-            if ($user_planet['planet_b_building'] != 0) {
-                $queue = explode(';', $user_planet['planet_b_building_id']); // GET ALL
-                $current_building = explode(',', $queue[0]); // GET ONLY THE FIRST ELEMENT
-                $building = $current_building[0]; // THE BUILDING
-                $level = $current_building[1]; // THE LEVEL
-                $time_to_end = $current_building[3] - time(); // THE TIME
-
-                // THE BUILDING BLOCK
-                if ($is_current_planet) {
-                    $building_block = DevelopmentsLib::currentBuilding('overview', $this->langs->language, $building);
-                    $building_block .= $this->langs->language[$this->objects->getObjects($building)] . ' (' . $level . ')';
-                    $building_block .= '<br /><div id="blc" class="z">' . FormatLib::prettyTime($time_to_end) . '</div>';
-                    $building_block .= "\n<script language=\"JavaScript\">";
-                    $building_block .= "\n	pp = \"" . $time_to_end . "\";\n";
-                    $building_block .= "\n	pk = \"" . 1 . "\";\n";
-                    $building_block .= "\n	pm = \"cancel\";\n";
-                    $building_block .= "\n	pl = \"" . $this->planet['planet_id'] . "\";\n";
-                    $building_block .= "\n	t();\n";
-                    $building_block .= "\n</script>\n";
-                } else {
-                    $building_block = '' . $this->langs->language[$this->objects->getObjects($building)] . ' (' . $level . ')';
-                    $building_block .= '<br><font color="#7f7f7f">(' . FormatLib::prettyTime($time_to_end) . ')</font>';
-                }
-            }
+        if ($user_planet['planet_b_building'] === 0) {
+            return $building_block;
         }
 
-        // BACK TO THE PLANET!
+        $queue = explode(';', $user_planet['planet_b_building_id']); // GET ALL
+        $current_building = explode(',', $queue[0]); // GET ONLY THE FIRST ELEMENT
+
+        if (count($current_building) <= 1){
+            return $this->langs->line('ov_free');
+        }
+
+        return $this->getBuildingQueueBlock($current_building, $is_current_planet);
+    }
+
+    private function getBuildingQueueBlock(array $currentBuilding, bool $isCurrentPlanet): string
+    {
+        $building = $currentBuilding[0]; // THE BUILDING
+        $level = $currentBuilding[1]; // THE LEVEL
+        $time_to_end = $currentBuilding[3] - time(); // THE TIME
+
+        if (!$isCurrentPlanet) {
+            $building_block = '' . $this->langs->language[$this->objects->getObjects($building)] . ' (' . $level . ')';
+            $building_block .= '<br><font color="#7f7f7f">(' . FormatLib::prettyTime($time_to_end) . ')</font>';
+            return $building_block;
+        }
+
+        $building_block = DevelopmentsLib::currentBuilding('overview', $this->langs->language, $building);
+        $building_block .= '<div class="queueContainer">';
+        $building_block .= $this->langs->language[$this->objects->getObjects($building)] . ' (' . $level . ')';
+        $building_block .= '<br /><div id="blc" class="z">' . FormatLib::prettyTime($time_to_end) . '</div>';
+        $building_block .= "\n<script language=\"JavaScript\">";
+        $building_block .= "\n	pp = \"" . $time_to_end . "\";\n";
+        $building_block .= "\n	pk = \"" . 1 . "\";\n";
+        $building_block .= "\n	pm = \"cancel\";\n";
+        $building_block .= "\n	pl = \"" . $this->planet['planet_id'] . "\";\n";
+        $building_block .= "\n	t();\n";
+        $building_block .= "\n</script>\n";
+        $building_block .= '</div>';
+
         return $building_block;
     }
 
